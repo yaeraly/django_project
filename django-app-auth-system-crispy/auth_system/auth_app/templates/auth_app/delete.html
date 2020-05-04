@@ -1,0 +1,12 @@
+{% extends 'auth_app/base.html' %}
+
+{% block content %}
+
+<p><strong>Are you sure you want to delete "{{user}}?"</strong></p>
+<form action="{% url 'delete' user.id %}" method="post">
+  {% csrf_token %}
+  <a href="{% url 'home' %}">Cancel</a>
+  <input type="submit" value="Delete">
+</form>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'auth_app/base.html' %}
+
+{% block content %}
+<h3>Logged out</h3>
+<p>
+  <strong>Thanks for spending some quality time with the Web site today.</strong>
+</p>
+<a href="{% url 'login' %}">Log In Again</a>
+{% endblock %}

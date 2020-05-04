@@ -25,12 +25,18 @@ SECRET_KEY = '^68k-0*hu(entd+z_$bty&-(io0fb2@idir68a_fj@xvyi-tc6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'auth_app.apps.AuthAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -119,3 +125,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
