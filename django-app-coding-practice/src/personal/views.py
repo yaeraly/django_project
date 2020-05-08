@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from account.models import Account
+
 
 def home_screen_view(request):
-    string_value = 'eraly TOktonazarov'
-    return render(request, 'personal/home.html', {'string_value': string_value})
+    accounts = Account.objects.all()
+    return render(request, 'personal/home.html', {'accounts': accounts})

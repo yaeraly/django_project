@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% include 'personal/snippets/body_snippet.html' with value=string_value %}
+{% for account in accounts %}
+{% include 'personal/snippets/body_snippet.html' with account=account %}
+{% endfor %}
 {% endblock content %}
