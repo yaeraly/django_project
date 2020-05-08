@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from myapp.models import Author
 
+
 def home(request):
     authors = Author.objects.all()
     return render(request, 'myapp/home.html', {'authors': authors})
