@@ -20,6 +20,7 @@ def delete(request, pk):
     return render(request, 'auth_app/delete.html', {'user': user})
 
 
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
