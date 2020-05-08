@@ -1,0 +1,13 @@
+<a href="{% url 'create' %}">Create New User</a>
+{% if authors %}
+<ul>
+  {% for author in authors %}
+  <li>
+    {{author}} - <a href="{% url 'delete' author.id %}">Delete</a> -
+    <a href="{% url 'update' author.id %}">Update</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><strong>No authors are available.</strong></p>
+{% endif %}
