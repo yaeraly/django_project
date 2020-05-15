@@ -1,0 +1,9 @@
+{% if programmers %}
+  <ul>
+    {% for programmer in programmers %}
+    <li>{{programmer}} - <a href="{% url 'create' programmer.id %}">Add Language</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p><strong>No programmers are available</strong></p>
+{% endif %}
