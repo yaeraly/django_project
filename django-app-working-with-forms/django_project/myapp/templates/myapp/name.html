@@ -1,0 +1,16 @@
+
+<form action="" method="post">
+  {% csrf_token %}
+  {% for form in formset %}
+    {% for field in form %}
+      {{field.label_tag}}
+      {{field}}
+      {{field.errors}}
+    {% endfor %}
+    <hr>
+  {% endfor %}
+
+  <input type="submit" value="Send">
+
+</form>
+<a href="{% url 'home' %}">home</a>
