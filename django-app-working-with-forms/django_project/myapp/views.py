@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import render, redirect
 
-from .forms import ArticleFormSet
+from .forms import ArticleFormSet, ReporterModelForm, ArticleModelForm
 
 def home_view(request):
 
@@ -30,3 +30,25 @@ def name_view(request):
         formset = ArticleFormSet(data)
 
     return render(request, 'myapp/name.html', {'formset': formset})
+
+
+def new_view(request):
+    context = {}
+    if request.method == 'POST':
+        reporterform = ReporterModelForm(request.POST)
+        articleform = ArticleModelForm(request.POST)
+        if reporterform.is_valid() and articleform.is_valid():
+            reporter = reporterform.save()
+            article = articleform.save(False)
+            article.reporter = reporter
+            article.save()
+            return redirect('home')
+
+    else:
+        reporterform = ReporterModelForm()
+        articleform = ArticleModelForm()
+
+    context['reporter'] = reporterform
+    context['article'] = articleform
+
+    return render(request, 'myapp/form.html', context)
