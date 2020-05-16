@@ -1,0 +1,14 @@
+<a href="{% url 'create' %}">Add New Author</a>
+{% if author_list %}
+  <ul>
+    {% for author in author_list %}
+      <li>
+        {{author}} -
+        <a href="{% url 'update' author.id %}">Edit</a> -
+        <a href="{% url 'delete' author.id %}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+<p><strong>No available reporters</strong></p>
+{% endif %}
