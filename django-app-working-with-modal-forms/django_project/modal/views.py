@@ -1,31 +1,37 @@
-from django.shortcuts import render
 from django.views import generic
+from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.generic import edit
 
 
 from .models import Employee
+from .mixins import ModelMixin
+from .forms import EmployeeForm
+from .ajax_views import (AjaxCreateView, AjaxDetailView, AjaxUpdateView, AjaxDeleteView)
 
 
-class HomeListView(generic.ListView):
+class EmployeeListView(ModelMixin, generic.ListView):
 	model = Employee
 	template_name = 'modal/home.html'
 
 
-class CreateEmployeeView(generic.CreateView):
+class CreateEmployeeView(AjaxCreateView, ModelMixin, edit.CreateView):
 	model = Employee
-	fields = ['first_name', 'last_name', 'email']
-	template_name = 'modal/create.html'
-	success_url = reverse_lazy('modal:home')
+	form_class = EmployeeForm
+	ajax_partial = 'modal/partial/employee_form_partial.html'
+	ajax_list_partial = 'modal/partial/employee_list_partial.html'
 
 
-class DeleteEmployeeView(generic.DeleteView):
+class UpdateEmployeeView(AjaxUpdateView, ModelMixin, edit.UpdateView):
 	model = Employee
-	template_name = 'modal/delete.html'
-	success_url = reverse_lazy('modal:home')
+	form_class = EmployeeForm
+	template_name = 'modal/employee_form.html'
+	ajax_partial = 'modal/partial/employee_form_partial.html'
+	ajax_list_partial = 'modal/partial/employee_list_partial.html'
 
 
-class UpdateEmployeeView(generic.UpdateView):
+class DeleteEmployeeView(AjaxDeleteView, ModelMixin, edit.DeleteView):
 	model = Employee
-	fields = ['first_name', 'last_name', 'email']
-	template_name = 'modal/update.html'
+	ajax_partial = 'modal/partial/employee_form_partial.html'
+	ajax_list_partial = 'modal/partial/employee_list_partial.html'
 	success_url = reverse_lazy('modal:home')

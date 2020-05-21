@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for employee in employee_list %}
+                    {% for employee in object_list %}
                     <tr>
 						<td>{% include 'modal/snippets/custom-checkbox-body.html' %}</td>
                         <td>{{employee.full_name}}</td>
