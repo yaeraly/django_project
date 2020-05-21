@@ -1,6 +1,6 @@
-<a href="#editEmployeeModal" class="edit" data-toggle="modal">
+<a href="{% url 'modal:update' employee.id %}" class="edit">
 	<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
 </a>
-<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+<a href="{% url 'modal:delete' employee.id %}" class="delete">
 	<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
 </a>

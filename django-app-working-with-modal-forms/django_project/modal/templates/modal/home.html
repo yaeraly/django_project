@@ -16,12 +16,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for employee in employee_list %}
                     <tr>
 						<td>{% include 'modal/snippets/custom-checkbox-body.html' %}</td>
-                        <td>Thomas Hardy</td>
-                        <td>thomashardy@mail.com</td>
+                        <td>{{employee.full_name}}</td>
+                        <td>{{employee.email}}</td>
                         <td>{% include 'modal/snippets/actions.html' %}</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
