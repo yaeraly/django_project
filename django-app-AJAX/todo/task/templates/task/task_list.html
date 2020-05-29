@@ -22,10 +22,10 @@
 
 	<div class="col-5 mt-3" id="taskList">
 		{% for task in tasks %}
-		<div class="card mb-2" id="taskCard">
+		<div class="card mb-2" id="taskCard" data-id="{{task.id}}" style="{% if task.completed %}text-decoration-line: line-through;{% endif %}">
 			<div class="card-body">
 				{{task}}
-				<button type="button" class="close" aria-label="Close">
+				<button type="button" class="close" aria-label="Close" data-id="{{task.id}}">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
 			</div>
