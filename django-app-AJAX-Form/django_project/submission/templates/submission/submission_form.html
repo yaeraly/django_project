@@ -4,21 +4,21 @@
 
 {% block content %}
 <div class="col-8 mt-5">
-	<form method="post" class="form-inline justify-content-center">
+	<form method="post" class="form-inline justify-content-center" id="createPersonForm" data-url="{% url 'form' %}">
 		{% csrf_token %}
 		{% for field in form %}
 			<div class="mx-3">
 				{{ field }}
 			</div>
 	   	{% endfor %}
-	   	<button class="btn btn-outline-success">Create</button>
+	   	<button class="btn btn-outline-success" type="button" id="createButton">Create</button>
 	</form>
 </div>
 
-<div class="col-5 mt-5">
+<div class="col-5 mt-5" id="personList">
 	{% for person in people %}
 		<div class="card mb-3">
-			<div class="card-body">
+			<div class="card-body" id="personCard">
 				{{person.full_name}}	
 				<button type="button" class="close" aria-label="Close">
 	         		<span aria-hidden="true">&times;</span>

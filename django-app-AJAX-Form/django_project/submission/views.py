@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
+from django.forms.models import model_to_dict
+from django.http import JsonResponse
 
 
 from .models import Person
@@ -19,7 +21,7 @@ class FormView(View):
 		form = PersonForm(request.POST)
 
 		if form.is_valid():
-			form.save()
-			return redirect('form')
+			new_form = form.save()
+			return JsonResponse({'person': model_to_dict(new_form)}, status=200)
 		else:
 			return redirect('form')
