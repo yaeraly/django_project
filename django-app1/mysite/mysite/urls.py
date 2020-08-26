@@ -1,4 +1,4 @@
-"""django_project URL Configuration
+"""mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -15,10 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from submission import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.FormView.as_view(), name='form'),
-    path('/<str:id>/delete/', views.DeleteView.as_view(), name='delete'),
 ]

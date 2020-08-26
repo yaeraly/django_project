@@ -25,3 +25,11 @@ class FormView(View):
 			return JsonResponse({'person': model_to_dict(new_form)}, status=200)
 		else:
 			return redirect('form')
+
+
+class DeleteView(View):
+	def post(self, request, id):
+		person = Person.objects.get(id=id)
+		person.delete()
+
+		return JsonResponse({'result': 'ok'}, status=200)

@@ -17,8 +17,8 @@
 
 <div class="col-5 mt-5" id="personList">
 	{% for person in people %}
-		<div class="card mb-3">
-			<div class="card-body" id="personCard">
+		<div class="card mb-3" id="personCard" data-id="{{ person.id }}">
+			<div class="card-body">
 				{{person.full_name}}	
 				<button type="button" class="close" aria-label="Close">
 	         		<span aria-hidden="true">&times;</span>
